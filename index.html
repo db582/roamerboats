@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roamer Boats — Holland, Michigan, 1946–1955</title>
+<meta name="description" content="The history of the Roamer Boat Company, the welded-steel cruisers built by Robert R. Linn in Holland, Michigan, before the plant became part of Chris-Craft.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Source+Serif+4:ital,opsz,wght@1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --steel-900:#10161b;
+    --steel-800:#1b242c;
+    --steel-700:#26333c;
+    --steel-600:#3a4a55;
+    --steel-500:#5a6d78;
+    --chrome-200:#eef1f2;
+    --chrome-300:#d7dee2;
+    --chrome-400:#aab8bf;
+    --paper:#ece2cb;
+    --paper-dark:#d9cbab;
+    --rust:#b5502e;
+    --rust-light:#d97a52;
+    --ink:#20201c;
+
+    --display: 'Oswald', sans-serif;
+    --serif: 'Source Serif 4', serif;
+
+    --wrap: 1180px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--steel-900);
+    color:var(--chrome-200);
+    font-family:var(--serif);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+
+  .eyebrow{
+    font-family:var(--display);
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    font-size:12.5px;
+    color:var(--rust-light);
+  }
+
+  h1,h2,h3{
+    font-family:var(--serif);
+    font-weight:600;
+    margin:0 0 .4em 0;
+    color:var(--chrome-200);
+  }
+
+  .wrap{
+    max-width:var(--wrap);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- rivet motif ---------- */
+  .rivet-rule{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:22px 0;
+  }
+  .rivet-rule::before,
+  .rivet-rule::after{
+    content:"";
+    height:1px;
+    flex:1;
+    background:linear-gradient(90deg, transparent, var(--steel-500), transparent);
+  }
+  .rivet-dot{
+    width:7px;height:7px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, var(--chrome-300), var(--steel-600) 70%);
+    box-shadow:0 0 0 2px var(--steel-800);
+    flex:none;
+  }
+
+  .plate{
+    position:relative;
+    border:1px solid var(--steel-600);
+    background:linear-gradient(180deg, var(--steel-800), var(--steel-700));
+    border-radius:2px;
+  }
+  .plate::before, .plate::after,
+  .plate .corner-l, .plate .corner-r{
+    content:"";
+    position:absolute;
+    width:8px;height:8px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, var(--chrome-300), var(--steel-600) 75%);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.4);
+  }
+  .plate::before{top:10px;left:10px;}
+  .plate::after{top:10px;right:10px;}
+  .plate .corner-l{bottom:10px;left:10px;}
+  .plate .corner-r{bottom:10px;right:10px;}
+
+  /* ---------- header / nav ---------- */
+  header.site{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(16,22,27,.86);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(90,109,120,.35);
+  }
+  header.site .bar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 28px;
+    max-width:var(--wrap); margin:0 auto;
+  }
+  .brandmark{
+    font-family:var(--display);
+    font-weight:700;
+    letter-spacing:.14em;
+    font-size:15px;
+    text-transform:uppercase;
+    color:var(--chrome-200);
+    text-decoration:none;
+  }
+  .brandmark span{color:var(--rust-light);}
+  nav.links{display:flex; gap:26px;}
+  nav.links a{
+    font-family:var(--display);
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:var(--chrome-400);
+    transition:color .2s ease;
+  }
+  nav.links a:hover{color:var(--rust-light);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding:168px 28px 96px;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse 900px 500px at 50% -10%, rgba(90,109,120,.35), transparent 60%),
+      linear-gradient(180deg, var(--steel-900), var(--steel-800) 60%, var(--steel-900));
+  }
+  .hero .blueprint{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(170,184,191,.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(170,184,191,.06) 1px, transparent 1px);
+    background-size:42px 42px;
+    mask-image:radial-gradient(ellipse 70% 70% at 50% 30%, black, transparent 75%);
+    pointer-events:none;
+  }
+  .hero-inner{
+    position:relative;
+    max-width:var(--wrap); margin:0 auto;
+    text-align:center;
+  }
+  .hero .eyebrow{display:block; margin-bottom:22px;}
+  .hero .logo-wrap{
+    max-width:640px; margin:0 auto 26px;
+    filter:drop-shadow(0 18px 34px rgba(0,0,0,.5));
+    opacity:0;
+    animation: rise 1s ease .15s forwards;
+  }
+  .hero .logo-wrap img{width:100%; height:auto;}
+  .hero .subhead{
+    font-size:clamp(16px,2.2vw,20px);
+    max-width:640px;
+    margin:0 auto 30px;
+    color:var(--chrome-300);
+    font-weight:400;
+  }
+  .hero .tagline{
+    font-family:var(--display);
+    font-style:normal;
+    letter-spacing:.06em;
+    color:var(--rust-light);
+    font-size:14px;
+    text-transform:uppercase;
+  }
+  .hero .tagline em{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:20px;
+    letter-spacing:0;
+    color:var(--chrome-200);
+    display:block;
+    margin-bottom:6px;
+    text-transform:none;
+  }
+
+  @keyframes rise{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  /* ---------- section shell ---------- */
+  section{padding:88px 0;}
+  .section-head{max-width:640px; margin-bottom:48px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,36px);}
+  .section-head .eyebrow{margin-bottom:12px; display:block;}
+
+  /* ---------- founder ---------- */
+  .founder{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    gap:48px;
+    align-items:start;
+  }
+  .founder .portrait{
+    padding:14px;
+  }
+  .founder .portrait img{
+    filter:sepia(.18) contrast(1.03);
+    border:1px solid var(--steel-600);
+  }
+  .founder .portrait figcaption{
+    font-family:var(--display);
+    font-size:11px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--chrome-400);
+    text-align:center;
+    margin-top:12px;
+  }
+  .founder .bio p{color:var(--chrome-300); font-size:17px; margin:0 0 18px;}
+  .founder .bio p:first-of-type::first-letter{
+    font-family:var(--serif);
+    font-size:52px;
+    font-weight:600;
+    float:left;
+    line-height:.85;
+    padding:4px 10px 0 0;
+    color:var(--rust-light);
+  }
+
+  /* ---------- timeline ---------- */
+  .timeline-section{background:var(--steel-800); border-top:1px solid var(--steel-600); border-bottom:1px solid var(--steel-600);}
+  .timeline{
+    position:relative;
+    margin-top:10px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:84px; top:6px; bottom:6px;
+    width:2px;
+    background:repeating-linear-gradient(180deg, var(--steel-500) 0 8px, transparent 8px 14px);
+  }
+  .t-item{
+    position:relative;
+    display:grid;
+    grid-template-columns:84px 1fr;
+    gap:28px;
+    padding:22px 0;
+  }
+  .t-item + .t-item{border-top:1px dashed rgba(90,109,120,.35);}
+  .t-year{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:20px;
+    color:var(--chrome-200);
+    text-align:right;
+    padding-right:22px;
+    position:relative;
+  }
+  .t-year::after{
+    content:"";
+    position:absolute;
+    right:-5px; top:8px;
+    width:11px; height:11px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, var(--rust-light), var(--rust) 70%);
+    box-shadow:0 0 0 4px var(--steel-800), 0 0 0 5px var(--steel-500);
+  }
+  .t-body h3{font-size:18px; margin-bottom:6px; color:var(--chrome-200);}
+  .t-body p{margin:0; color:var(--chrome-400); font-size:15.5px;}
+
+  /* ---------- gallery ---------- */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+  }
+  figure.photo{
+    margin:0;
+    background:var(--paper);
+    padding:12px 12px 16px;
+    box-shadow:0 12px 26px rgba(0,0,0,.35), 0 1px 0 rgba(255,255,255,.04) inset;
+    transform:rotate(var(--tilt,0deg));
+  }
+  figure.photo:nth-child(1){--tilt:-1.4deg;}
+  figure.photo:nth-child(2){--tilt:1deg;}
+  figure.photo:nth-child(3){--tilt:-.6deg;}
+  figure.photo img{
+    filter:sepia(.28) contrast(1.05);
+    border:1px solid rgba(0,0,0,.15);
+  }
+  figure.photo figcaption{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:13.5px;
+    color:var(--ink);
+    margin-top:10px;
+    line-height:1.45;
+  }
+
+  /* ---------- specs ---------- */
+  .specs-section .wrap{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .specs-copy p{color:var(--chrome-300); font-size:16.5px;}
+  .spec-plate{
+    padding:30px 34px;
+  }
+  .spec-row{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    padding:13px 0;
+    border-bottom:1px solid rgba(90,109,120,.35);
+    font-size:14.5px;
+  }
+  .spec-row:last-child{border-bottom:none;}
+  .spec-row dt{
+    font-family:var(--display);
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--chrome-400);
+    font-size:12px;
+    padding-top:2px;
+  }
+  .spec-row dd{margin:0; text-align:right; color:var(--chrome-200); max-width:60%;}
+
+  /* ---------- family / legacy ---------- */
+  .legacy{
+    background:linear-gradient(180deg, var(--steel-900), #0b0f13);
+  }
+  .legacy .wrap{max-width:760px;}
+  .legacy blockquote{
+    margin:0 0 26px;
+    font-size:clamp(19px,2.4vw,23px);
+    font-style:italic;
+    color:var(--chrome-200);
+    line-height:1.55;
+    border-left:2px solid var(--rust);
+    padding-left:24px;
+  }
+  .legacy .sign-off{
+    font-family:var(--display);
+    letter-spacing:.06em;
+    color:var(--chrome-400);
+    font-size:13px;
+    text-transform:uppercase;
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding:44px 0 60px;
+    border-top:1px solid var(--steel-700);
+  }
+  footer .wrap{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:20px;
+  }
+  footer .fmark{
+    font-family:var(--display);
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-size:13px;
+    color:var(--chrome-400);
+  }
+  footer .credit{
+    font-size:12.5px;
+    color:var(--steel-500);
+    max-width:480px;
+    line-height:1.6;
+  }
+
+  /* ---------- reveal ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1; transform:none; transition:none;}
+    .hero .logo-wrap{animation:none; opacity:1;}
+  }
+
+  @media (max-width: 860px){
+    .founder{grid-template-columns:1fr;}
+    .founder .portrait{max-width:240px; margin:0 auto;}
+    .gallery{grid-template-columns:1fr;}
+    .specs-section .wrap{grid-template-columns:1fr;}
+    nav.links{display:none;}
+    .t-item{grid-template-columns:60px 1fr; gap:16px;}
+    .timeline::before{left:60px;}
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--rust-light);
+    outline-offset:3px;
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="bar">
+    <a class="brandmark" href="#top">ROAMER <span>BOATS</span></a>
+    <nav class="links">
+      <a href="#founder">Founder</a>
+      <a href="#timeline">History</a>
+      <a href="#yard">The Yard</a>
+      <a href="#family">Family</a>
+    </nav>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<section class="hero">
+  <div class="blueprint"></div>
+  <div class="hero-inner">
+    <span class="eyebrow">Holland, Michigan &nbsp;·&nbsp; Steel Fabricating Plant &nbsp;·&nbsp; Est. 1946</span>
+    <div class="logo-wrap"><img src="images/roamer-logo.png" alt="Roamer Steel Boats emblem"></div>
+    <p class="subhead">The welded-steel cruisers built by Robert R. Linn on the Holland waterfront — nine years of Roamer, before the company became part of Chris-Craft.</p>
+    <div class="tagline">
+      <em>“They'll go anywhere.”</em>
+      Roamer sales literature, on boats launched straight from the builder's dock
+    </div>
+  </div>
+</section>
+
+<section id="founder">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Founder</span>
+      <h2>Robert R. Linn</h2>
+    </div>
+    <div class="founder">
+      <figure class="portrait plate reveal">
+        <span class="corner-l"></span><span class="corner-r"></span>
+        <img src="images/robert-linn-portrait.jpg" alt="Portrait of Robert R. Linn, founder of the Roamer Boat Company">
+        <figcaption>Robert R. Linn, founder, Roamer Boat Company</figcaption>
+      </figure>
+      <div class="bio reveal">
+        <p>Robert Linn came to Holland from Grand Rapids as a young man with his wife, Frances, and spent two years apprenticing with Ken Campbell at the Campbell Boat Company. The couple and their two sons, Robert Jr. and David, settled at 1024 South Shore Drive, close enough to the Campbell yard to watch it every day.</p>
+        <p>In 1946, working out of the Campbell Boat Company facility, Linn built his first Roamer: an all-welded, steel-hulled 32-foot express cruiser. By the fall of 1947 he had produced another steel 30-footer — the boat the family christened <em>Roamer</em>, and the boat that gave the company its name.</p>
+        <p>Linn's pitch was simple and true to his trade: steel, not wood. Copper-alloy steel, 1/8 inch on the hull sides and 3/16 inch on the bottom, meant an easy-care boat that wouldn't rot, warp, or corrode — carefree confidence, as the brochures put it, in doubtful waters.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="timeline" class="timeline-section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Company Timeline</span>
+      <h2>From a Grand Rapids apprentice to a Navy contractor</h2>
+    </div>
+    <div class="timeline">
+
+      <div class="t-item reveal">
+        <div class="t-year">1946</div>
+        <div class="t-body">
+          <h3>The first Roamer</h3>
+          <p>Robert Linn builds his first all-welded, steel-hulled 32-foot express cruiser at the Campbell Boat Company site, where he had apprenticed.</p>
+        </div>
+      </div>
+
+      <div class="t-item reveal">
+        <div class="t-year">1947</div>
+        <div class="t-body">
+          <h3>A name, and a mahogany cabin</h3>
+          <p>A new steel 30-footer, fitted with a mahogany wood cabin, is christened <em>Roamer</em> by Frances Linn — the family boat that names the company.</p>
+        </div>
+      </div>
+
+      <div class="t-item reveal">
+        <div class="t-year">1949–50</div>
+        <div class="t-body">
+          <h3>A patrol boat, a brochure, a factory</h3>
+          <p>Linn builds a 36-foot patrol boat for the City of Chicago's drainage canal and issues Roamer's first brochure. By 1950, a factory at 961 Washington Avenue is turning out cabin cruisers, express and deckhouse cruisers, and double-cabin models from 32 to 48 feet — plus passenger boats for outfitters as far away as Ely, Minnesota.</p>
+        </div>
+      </div>
+
+      <div class="t-item reveal">
+        <div class="t-year">1951</div>
+        <div class="t-body">
+          <h3>The U.S. Navy comes calling</h3>
+          <p>The Navy contracts Roamer to build ten John Alden–designed, 45-foot diesel steel tugs for the Army Transportation Corps — a contract worth over half a million dollars.</p>
+        </div>
+      </div>
+
+      <div class="t-item reveal">
+        <div class="t-year">1952–54</div>
+        <div class="t-body">
+          <h3>Thirty-one tugs, one hundred twenty jobs</h3>
+          <p>A second Navy contract adds twenty-one more tugs and funds a new warehouse in Park Township, near the Big Bayou. The last three tugs steam south in September 1954, closing out a project that had employed 120 people.</p>
+        </div>
+      </div>
+
+      <div class="t-item reveal">
+        <div class="t-year">1955</div>
+        <div class="t-body">
+          <h3>Sold to Chris-Craft</h3>
+          <p>In March, Robert Linn sells the Roamer Boat Company to Chris-Craft for $117,000. Linn and his sons go on to run Bay Haven Marine at 1862 Ottawa Beach Road for many years.</p>
+        </div>
+      </div>
+
+      <div class="t-item reveal">
+        <div class="t-year">1956–79</div>
+        <div class="t-body">
+          <h3>Roamer Steel Boats Division</h3>
+          <p>Chris-Craft continues the welded-steel line as its Roamer Division, adding an aluminum boat in 1962 and eventually moving production to Florida in 1975. Steel-hull production ends for good in 1979.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="yard">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">From the Yard</span>
+      <h2>The plant, the launch, the fleet</h2>
+    </div>
+    <div class="gallery">
+      <figure class="photo reveal">
+        <img src="images/roamer-factory.jpg" alt="The Roamer Boat Company steel fabricating plant on Washington Avenue in Holland, Michigan">
+        <figcaption>The Roamer Boat Company steel fabricating plant, 961 Washington Avenue, Holland.</figcaption>
+      </figure>
+      <figure class="photo reveal">
+        <img src="images/roamer-cruiser.jpg" alt="A Roamer cruiser docked at Jesiek's Shipyard in Holland, Michigan">
+        <figcaption>A Roamer cruiser at Jesiek's Shipyard — most hulls were launched straight into the water there, delivered by their new owners rather than hauled overland.</figcaption>
+      </figure>
+      <figure class="photo reveal">
+        <img src="images/roamer-tugs.jpg" alt="Three U.S. Army Corps of Engineers steel tugs built by Roamer, rafted together on the Mississippi River">
+        <figcaption>Three of the 31 welded-steel Army tugs Roamer built for the Transportation Corps, rafted together on the Mississippi River.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="specs-section">
+  <div class="wrap">
+    <div class="specs-copy reveal">
+      <span class="eyebrow">Built, Not Assembled</span>
+      <h2>What made a Roamer a Roamer</h2>
+      <p>Every hull left the plant welded, not riveted or planked — steel from the waterline up, in an era when nearly everyone else on the lake was still building in wood. Roamer's naval architect, A.M. Deering of Chicago, drew most of the pleasure-boat lines; the yard itself handled everything from work boats to Navy tugs.</p>
+      <p>The line ran from a bare-hull "handy man's special" all the way to a finished 48-foot cruiser — and it competed directly with Safti-Craft, Steel Craft, and Higgins for a buyer who wanted a boat that could take a hard landing.</p>
+    </div>
+    <dl class="spec-plate plate reveal">
+      <span class="corner-l"></span><span class="corner-r"></span>
+      <div class="spec-row"><dt>Hull sides</dt><dd>1/8" copper-alloy steel</dd></div>
+      <div class="spec-row"><dt>Bottom</dt><dd>3/16" copper-alloy steel</dd></div>
+      <div class="spec-row"><dt>Cabin cruiser lengths</dt><dd>32–40 ft (stock); 41, 42, 48 ft models also built</dd></div>
+      <div class="spec-row"><dt>1950 price range</dt><dd>$9,950 – $15,800</dd></div>
+      <div class="spec-row"><dt>Other hull types</dt><dd>Express, deckhouse &amp; double-cabin cruisers, houseboats, fishing &amp; work boats</dd></div>
+      <div class="spec-row"><dt>Commercial work</dt><dd>Passenger boats for Olson Boat Corp. (Wisconsin Dells), Roseland Amusement Park (Rochester, NY), Wilderness Outfitters (Ely, MN)</dd></div>
+      <div class="spec-row"><dt>Naval architect</dt><dd>A. M. Deering, Chicago</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section id="family" class="legacy">
+  <div class="wrap reveal">
+    <span class="eyebrow">The Family</span>
+    <blockquote>Robert Linn's sons, Robert Jr. and David, grew up a few doors from the Campbell yard and spent their working lives around the boats their father built — first at Roamer, then at Bay Haven Marine after the sale to Chris-Craft.</blockquote>
+    <p style="color:var(--chrome-300); font-size:16.5px;">David Linn continued in the family boat business for decades after Roamer became part of Chris-Craft. This site is kept by his descendants, to keep the story of the Roamer Boat Company — and the man who welded its first hull — easy to find.</p>
+    <p class="sign-off" style="margin-top:26px;">The Linn Family &nbsp;·&nbsp; Holland, Michigan</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fmark">Roamer Boats &nbsp;·&nbsp; roamerboats.com</div>
+    <div class="credit">History and photographs drawn from Geoffrey D. Reynolds, “Roamer, Before Chris-Craft,” <em>Classic Boating</em>, no. 167 (May/June 2012), Hope College Digital Commons.</div>
+  </div>
+</footer>
+
+<script>
+  var els = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.12});
+    els.forEach(function(el){ io.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+
+</body>
+</html>
